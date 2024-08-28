@@ -20,7 +20,6 @@ const BuyPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-yellow-400 via-red-500 to-pink-600">
-
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {cards.map((card) => (
           <div
@@ -36,20 +35,26 @@ const BuyPage = () => {
       </div>
 
       {selectedCard && (
-        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
-          <div className="relative bg-white rounded-2xl p-10 max-w-md w-full shadow-2xl">
+        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
+          <div className="relative bg-white bg-opacity-10 backdrop-blur-lg rounded-2xl p-8 max-w-md w-full shadow-2xl">
             <button
               onClick={handleCloseModal}
-              className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 transition transform hover:scale-105"
+              className="absolute top-4 right-4 text-gray-300 hover:text-gray-100 transition transform hover:scale-105"
             >
               <IoClose size={24} />
             </button>
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-6">Account Details</h2>
-            <p className="mb-3 text-lg"><strong>Wallet Address:</strong> {selectedCard.walletAddress}</p>
-            <p className="mb-3 text-lg"><strong>Account ID:</strong> {selectedCard.accountId}</p>
-            <p className="mb-6 text-lg"><strong>Cost:</strong> {selectedCard.cost}</p>
+            <h2 className="text-3xl font-extrabold text-white mb-6">Account Details</h2>
+            <p className="mb-3 text-lg text-white"><strong>Wallet Address:</strong> {selectedCard.walletAddress}</p>
+            <p className="mb-3 text-lg text-white"><strong>Account ID:</strong> {selectedCard.accountId}</p>
+            <p className="mb-3 text-lg text-white"><strong>Cost:</strong> {selectedCard.cost}</p>
+            <p className="mb-3 text-lg text-white"><strong>Twitch ID:</strong> twitch_id_example</p>
+            <p className="mb-3 text-lg text-white"><strong>Steam ID:</strong> steam_id_example</p>
+            <p className="mb-6 text-lg text-white"><strong>Gameplay Videos:</strong> 
+              <a href="https://example.com/video1" className="text-blue-400 hover:underline">Video 1</a>, 
+              <a href="https://example.com/video2" className="text-blue-400 hover:underline">Video 2</a>
+            </p>
             <button
-              className="bg-yellow-600 text-white font-semibold px-8 py-3 rounded-lg shadow-md hover:bg-yellow-500 transition duration-300 transform hover:scale-105"
+              className="bg-yellow-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105"
             >
               Buy Now
             </button>
