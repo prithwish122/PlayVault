@@ -50,13 +50,13 @@ const JoinPage = () => {
                   placeholder="Enter your wallet address"
                   required
                 />
-                <label className="block text-left text-white text-sm font-semibold mb-2 mt-4">Account Cost (ETH)</label>
+                <label className="block text-left text-white text-sm font-semibold mb-2 mt-4">Account Cost (PVT)</label>
                 <input
                   type="number"
                   value={accountCost}
                   onChange={(e) => setAccountCost(e.target.value)}
                   className="w-full px-4 py-2 rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-purple-400"
-                  placeholder="Enter the cost in EDU"
+                  placeholder="Enter the cost in PVT"
                   required
                 />
               </div>
