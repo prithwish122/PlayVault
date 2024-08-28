@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import JoinPage from './components/JoinPage'; // Existing join page component
-import BuyPage from './components/BuyPage'; // Create this new component for the buy page
+import JoinPage from './components/JoinPage';
+import BuyPage from './components/BuyPage'; 
 
 function App() {
   return (
