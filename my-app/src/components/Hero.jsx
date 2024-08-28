@@ -2,10 +2,20 @@ import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
 
+// Adding Google Fonts
+const loadGoogleFonts = () => {
+  const link = document.createElement('link');
+  link.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap';
+  link.rel = 'stylesheet';
+  document.head.appendChild(link);
+};
+
 const Hero = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    loadGoogleFonts();
+
     // GSAP animations
     gsap.fromTo(
       '.hero-title',
@@ -30,24 +40,29 @@ const Hero = () => {
 
   return (
     <div className="flex items-center justify-center h-screen bg-gradient-to-r from-purple-500 via-pink-500 to-red-500">
-      {/* <div className="absolute inset-0 bg-black opacity-40"></div> */}
-
       <div className="relative text-center z-10">
-        <h1 className="hero-title text-5xl font-extrabold text-white mb-8 text-shadow-md">
-          Welcome to PlayVault
+        <h1
+          className="hero-title text-5xl md:text-6xl font-extrabold text-white mb-8 text-shadow-md"
+          style={{ fontFamily: 'Montserrat, sans-serif' }}
+        >
+          Welcome to <span className="text-yellow-300">PlayVault</span> <br />
+          <span className="text-yellow-400">BID</span> game accounts to <br />
+          purchase from <span className="text-yellow-300">legend gamers</span>
           <br />
-          Join us now
+          <span className="text-pink-300">Join us now</span>
         </h1>
         <div className="flex justify-center gap-4">
           <button
             onClick={handleJoinNow}
-            className="hero-button bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-purple-100 transition-transform duration-300 transform hover:scale-105"
+            className="hero-button bg-white text-purple-600 font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-purple-100 transition-transform duration-300 transform hover:scale-105 text-lg md:text-xl"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             Join Now
           </button>
           <button
             onClick={handleBuyNow}
-            className="hero-button bg-yellow-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-yellow-400 transition-transform duration-300 transform hover:scale-105"
+            className="hero-button bg-yellow-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-yellow-400 transition-transform duration-300 transform hover:scale-105 text-lg md:text-xl"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             Buy Now
           </button>

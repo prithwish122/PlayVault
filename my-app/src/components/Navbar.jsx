@@ -24,25 +24,39 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Animate the navbar sliding in from the top
+    // Load Google Fonts
+    const loadGoogleFonts = () => {
+      const link = document.createElement('link');
+      link.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap';
+      link.rel = 'stylesheet';
+      document.head.appendChild(link);
+    };
+
+    loadGoogleFonts();
+
+    // GSAP animations
     gsap.fromTo(
       '.navbar',
       { y: -100, opacity: 0 },
       { y: 0, opacity: 1, duration: 1, ease: 'power4.out' }
     );
 
-    // Animate the logo with a bounce effect
     gsap.fromTo(
       '.navbar-logo',
       { opacity: 0, y: -30 },
       { opacity: 1, y: 0, duration: 1, ease: 'bounce.out' }
     );
 
-    // Animate the button with a pulse effect
     gsap.fromTo(
       '.connect-button',
       { opacity: 0, scale: 0.9 },
       { opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)', delay: 0.5 }
+    );
+
+    gsap.fromTo(
+      '.claim-button',
+      { opacity: 0, scale: 0.9 },
+      { opacity: 1, scale: 1, duration: 1, ease: 'back.out(1.7)', delay: 0.7 }
     );
   }, []);
 
@@ -59,27 +73,45 @@ const Navbar = () => {
     }
   };
 
+  const handleClaimPrize = () => {
+    alert('Prize claimed successfully!'); // Replace this with actual logic for claiming the prize
+  };
+
   return (
     <nav className="navbar bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 p-4 flex justify-between items-center shadow-lg relative">
       <Link to="/" className="flex items-center navbar-logo">
         <LogoSVG />
-        <span className="text-white text-3xl font-extrabold tracking-wide ml-3 cursor-pointer">
+        <span
+          className="text-white text-3xl font-extrabold tracking-wide ml-3 cursor-pointer"
+          style={{ fontFamily: 'Montserrat, sans-serif' }}
+        >
           PlayVault
         </span>
       </Link>
-      <div>
+      <div className="flex items-center gap-4">
         {account ? (
-          <span className="text-white font-semibold bg-purple-800 px-5 py-2 rounded-lg shadow-md transform transition-transform hover:scale-105">
+          <span
+            className="text-white font-semibold bg-purple-800 px-5 py-2 rounded-lg shadow-md transform transition-transform hover:scale-105"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
+          >
             Connected: {account.substring(0, 6)}...{account.substring(account.length - 4)}
           </span>
         ) : (
           <button
             onClick={connectMetaMask}
             className="connect-button bg-white text-purple-600 font-semibold px-6 py-3 rounded-lg shadow-xl transition-all duration-300 ease-in-out hover:bg-purple-100 hover:scale-105"
+            style={{ fontFamily: 'Poppins, sans-serif' }}
           >
             Connect MetaMask
           </button>
         )}
+        <button
+          onClick={handleClaimPrize}
+          className="claim-button bg-yellow-500 text-white font-semibold px-6 py-3 rounded-lg shadow-xl transition-all duration-300 ease-in-out hover:bg-yellow-400 hover:scale-105"
+          style={{ fontFamily: 'Poppins, sans-serif' }}
+        >
+          Claim Prize
+        </button>
       </div>
     </nav>
   );
