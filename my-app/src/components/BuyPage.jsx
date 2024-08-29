@@ -42,7 +42,7 @@ const BuyPage = () => {
     // axios
     axios
       .post(
-        "http://localhost:9000/withdraw",
+        "https://playvault.onrender.com/withdraw",
         { clientAddress, claimAmt },
         {
           headers: {
