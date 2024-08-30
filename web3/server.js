@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow requests only from this origin
+    origin: true, // Reflects the request origin, essentially allowing all origins
   })
 );
 console.log(__path);
