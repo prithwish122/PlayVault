@@ -13,7 +13,7 @@ app.use((req, res, next) => {
 
 app.use(
   cors({
-    origin: "https://play-vault-webservice-akakak0796-gmailcoms-projects.vercel.app", // Reflects the request origin, essentially allowing all origins
+    origin: true, // Reflects the request origin, essentially allowing all origins
   })
 );
 console.log(__path);
