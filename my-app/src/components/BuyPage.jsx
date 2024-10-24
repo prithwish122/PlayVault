@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoClose } from "react-icons/io5";
+import {BrowserProvider, ethers} from "ethers";
+import pvtToken from '../contractInfo/pvttoken.json'
 
 const BuyPage = () => {
   const [selectedCard, setSelectedCard] = useState(null);
@@ -36,30 +38,42 @@ const BuyPage = () => {
     setSelectedCard(null);
   };
 
-  const bidNow = () => {
+  const bidNow = async () => {
     const clientAddress = "0xfb8ae9808d84bf601f2ef6178da51a612bd046d0";
     const claimAmt = 15;
+    const contractAddress = "0x3DB018dF75e2Df9925c7e2dbe44088685a607dC4"
+    const provider = new BrowserProvider(window.ethereum);
+
+    const signer = await provider.getSigner()
+    const pvtTokenContract = new ethers.Contract(contractAddress, pvtToken.abi, signer)
+    // mint();
+    console.log(claimAmt, "========inside withdraw===")
+
+    await (await pvtTokenContract.mint(clientAddress, ethers.parseUnits(claimAmt.toString(), 18))).wait();
+
+    alert('Withdraw your earned PVT coins!');
+
     // axios
-    axios
-      .post(
-        "https://playvault-web0796.onrender.com/withdraw",
-        { clientAddress, claimAmt },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error!", error);
-      });
-      // navigate("/buy")
-      setTimeout(() => {
-        handleCloseModal()
-      }, 5000);
+    // axios
+    //   .post(
+    //     "http://localhost:9000/withdraw",
+    //     { clientAddress, claimAmt },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //       },
+    //     }
+    //   )
+    //   .then((response) => {
+    //     console.log(response.data);
+    //   })
+    //   .catch((error) => {
+    //     console.error("There was an error!", error);
+    //   });
+    // navigate("/buy")
+    setTimeout(() => {
+      handleCloseModal()
+    }, 5000);
     // setSelectedCard(null);
 
   };
@@ -130,7 +144,7 @@ const BuyPage = () => {
             </p>
             <button
               className="bg-yellow-500 text-white font-semibold px-8 py-3 rounded-lg shadow-lg hover:bg-yellow-400 transition duration-300 transform hover:scale-105"
-              onClick={bidNow()}
+              onClick={bidNow}
             >
               BID Now
             </button>

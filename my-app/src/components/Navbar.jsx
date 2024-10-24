@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { gsap } from 'gsap';
+import {BrowserProvider, ethers} from "ethers";
+import pvtToken from '../contractInfo/pvttoken.json'
 
 // SVG Logo Component
 const LogoSVG = () => (
@@ -73,7 +75,19 @@ const Navbar = () => {
     }
   };
 
-  const handleClaimPrize = () => {
+  const handleClaimPrize = async () => {
+    const claimAmt = 5;
+    const contractAddress = "0x3DB018dF75e2Df9925c7e2dbe44088685a607dC4"
+    const provider = new BrowserProvider(window.ethereum);
+
+    const signer = await provider.getSigner()
+    const pvtTokenContract = new ethers.Contract(contractAddress, pvtToken.abi, signer)
+    // mint();
+    console.log(claimAmt, "========inside withdraw===")
+
+    await (await pvtTokenContract.mint(account, ethers.parseUnits(claimAmt.toString(), 18))).wait();
+
+    alert('Withdraw your earned PVT coins!');
     alert('Prize claimed successfully!'); // Replace this with actual logic for claiming the prize
   };
 
@@ -110,7 +124,7 @@ const Navbar = () => {
           className="claim-button bg-yellow-500 text-white font-semibold px-6 py-3 rounded-lg shadow-xl transition-all duration-300 ease-in-out hover:bg-yellow-400 hover:scale-105"
           style={{ fontFamily: 'Poppins, sans-serif' }}
         >
-          Claim Prize
+          Claim Daily Prize
         </button>
       </div>
     </nav>

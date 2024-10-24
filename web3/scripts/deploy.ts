@@ -2,7 +2,7 @@ import hre from "hardhat";
 
 async function main() {
   // Compile and deploy the contract
-  const MyCustomToken = await hre.ethers.getContractFactory("MyCustomToken");
+  const MyCustomToken = await hre.ethers.getContractFactory("PVTToken");
   const myCustomToken = await MyCustomToken.deploy();
   await myCustomToken.deployed();
 
