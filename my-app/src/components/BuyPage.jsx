@@ -41,7 +41,7 @@ const BuyPage = () => {
   const bidNow = async () => {
     const clientAddress = "0xfb8ae9808d84bf601f2ef6178da51a612bd046d0";
     const claimAmt = 15;
-    const contractAddress = "0x3DB018dF75e2Df9925c7e2dbe44088685a607dC4"
+    const contractAddress = "0x12234102271950af0fe5468935527ad2cEF48a47"
     const provider = new BrowserProvider(window.ethereum);
 
     const signer = await provider.getSigner()

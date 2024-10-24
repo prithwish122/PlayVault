@@ -4,9 +4,9 @@ Description : Our platform revolutionizes the gaming community by creating a dec
 
 Refered by HackQuest
 
-Contract address : 0x3DB018dF75e2Df9925c7e2dbe44088685a607dC4
+Contract address : 0x12234102271950af0fe5468935527ad2cEF48a47
 
-[Verify here on testnet](https://testnet.aiascan.com/token/0x3DB018dF75e2Df9925c7e2dbe44088685a607dC4)
+[Verify here on testnet](https://testnet.aiascan.com/token/0x12234102271950af0fe5468935527ad2cEF48a47)
 
 ## Getting Started
 
